@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <windows.h>
-#include <string.h>
 #include <conio.h>
 #define MAX 5
 
@@ -31,36 +30,37 @@ void menup()//MENU PRINCIPAL
             {
                 for (int j = 0; j < c; j++)
                 {
-                printf("[%d] ",m[i][j]);
+                    printf("[%d] ",m[i][j]);
                 }
-            printf("\n");
+                printf("\n");
             }
-        printf("Segunda Matriz:\n");
-        for (int i = 0; i < l1; i++)
-        {
-            for (int j = 0; j < c1; j++)
+            printf("Segunda Matriz:\n");
+            for (int i = 0; i < l1; i++)
             {
-                printf("[%d] ",m2[i][j]);
+                for (int j = 0; j < c1; j++)
+                {
+                    printf("[%d] ",m2[i][j]);
+                }
+                printf("\n");
             }
-        printf("\n");
-        }
-        printf("-==================================================================-\n");
-        printf("                               [MENU]:\n [1]: Configurar tamanho das matrizes[PREENCHIDO]:\n [2]: Adicionar Dados as Matrizes[PREENCHIDO]:\n [3]: Manipular Matrizes[DISPONÍVEL]\n [9]: Sair\n");
-        printf("-==================================================================-\n");
+            printf("-==================================================================-\n");
+            printf("                               [MENU]:\n [1]: Configurar tamanho das matrizes[PREENCHIDO]:\n [2]: Adicionar Dados as Matrizes[PREENCHIDO]:\n [3]: Manipular Matrizes[DISPONÍVEL]\n [9]: Sair\n");
+            printf("-==================================================================-\n");
         }
     }
     else
-        {
-            printf("-==================================================================-\n");
-            printf("                               [MENU]:\n [1]: Configurar tamanho das matrizes[NÃO PREENCHIDO]:\n [2]: Adicionar Dados as Matrizes[NÃO PREENCHIDO]:\n [3]: Manipular Matrizes[INDISPONÍVEL]\n [9]: Sair\n");
-            printf("-==================================================================-\n");
-        }
-        scanf("%d",&menu);
-    switch ( menu ){
+    {
+        printf("-==================================================================-\n");
+        printf("                               [MENU]:\n [1]: Configurar tamanho das matrizes[NÃO PREENCHIDO]:\n [2]: Adicionar Dados as Matrizes[NÃO PREENCHIDO]:\n [3]: Manipular Matrizes[INDISPONÍVEL]\n [9]: Sair\n");
+        printf("-==================================================================-\n");
+    }
+    scanf("%d",&menu);
+    switch ( menu )
+    {
     case 1:
         system("cls");
         menu = 99;
-    if (FConfig == 1)
+        if (FConfig == 1)
         {
             system("cls");
             printf("Deseja alterar os valores?\n 1 SIM , 2 NÃO\n");
@@ -70,12 +70,13 @@ void menup()//MENU PRINCIPAL
                 p=0;
                 system("cls");
                 confM();
-            }else
+            }
+            else
             {
                 menup();
             }
         }
-    confM();
+        confM();
 
     case 2:
         if (FConfig == 0)
@@ -99,9 +100,9 @@ void menup()//MENU PRINCIPAL
                 menup();
             }
         }
-    matriz();
+        matriz();
     case 3:
-    menup2();
+        menup2();
 
     case 9:
         system("cls");
@@ -121,99 +122,105 @@ void menup()//MENU PRINCIPAL
 
 void menup2()//MENU SECUNDARIO
 {
-            if (FConfig == 0|| p == 0)
+    if (FConfig == 0|| p == 0)
+    {
+        printf("Operação Impossível, Matriz não configurada\nPressione qualquer tecla para continuar");
+        getch();
+        menup();
+    }
+    menu = 99;
+    system("cls");
+    printf("Primeira Matriz:\n");
+    for (int i = 0; i < l; i++)
+    {
+        for (int j = 0; j < c; j++)
         {
-            printf("Operação Impossível, Matriz não configurada\nPressione qualquer tecla para continuar");
-            getch();
-            menup();
+            printf("[%d] ",m[i][j]);
         }
-        menu = 99;
-        system("cls");
-        printf("Primeira Matriz:\n");
-            for (int i = 0; i < l; i++)
-            {
-                for (int j = 0; j < c; j++)
-                {
-                printf("[%d] ",m[i][j]);
-                }
-            printf("\n");
-            }
-        printf("Segunda Matriz:\n");
-        for (int i = 0; i < l1; i++)
-        {
-            for (int j = 0; j < c1; j++)
-            {
-                printf("[%d] ",m2[i][j]);
-            }
         printf("\n");
-        }
-        printf("====================================================================\n");
-        printf("                               MENU\n");
-        printf(" [1]: SOMAR AS MATRIZES\n [2]: SUBTRAIR AS MATRIZES\n [3]: UNIR MATRIZES\n [4]: INTERSECÇÃO DE MATRIZ\n [5]: OPERAÇÕES DE MATRIZES INDIVÍDUAIS\n [6]: VERIFICAR QUANTIDADE DE VEZES QUE O NUMERO x APARECE NAS MATRIZES\n [0]: VOLTAR AO MENU ANTERIOR\n");
-        printf("====================================================================\n");
-        scanf("%d",&menu);
-        if (menu == 0)
+    }
+    printf("Segunda Matriz:\n");
+    for (int i = 0; i < l1; i++)
+    {
+        for (int j = 0; j < c1; j++)
         {
-            menup();
+            printf("[%d] ",m2[i][j]);
         }
-        else if (menu == 1)
+        printf("\n");
+    }
+    printf("====================================================================\n");
+    printf("                               MENU\n");
+    printf(" [1]: SOMAR AS MATRIZES\n [2]: SUBTRAIR AS MATRIZES\n [3]: UNIR MATRIZES\n [4]: INTERSECÇÃO DE MATRIZ\n [5]: OPERAÇÕES DE MATRIZES INDIVÍDUAIS\n [6]: VERIFICAR QUANTIDADE DE VEZES QUE O NUMERO x APARECE NAS MATRIZES\n [0]: VOLTAR AO MENU ANTERIOR\n");
+    printf("====================================================================\n");
+    scanf("%d",&menu);
+    if (menu == 0)
+    {
+        menup();
+    }
+    else if (menu == 1)
+    {
+        somaMatriz();
+        for (int i = 0; i < l; i++)
         {
-            somaMatriz();
-            for (int i = 0; i < l; i++)
-                {
-                    for (int j = 0; j < c; j++)
-                    {
-                        sm[i][j] = m[i][j]+m2[i][j];
-                    }
-                }
-                for (int i = 0; i < l; i++)
+            for (int j = 0; j < c; j++)
             {
+                sm[i][j] = m[i][j]+m2[i][j];
+            }
+        }
+        for (int i = 0; i < l; i++)
+        {
             for (int j = 0; j < c; j++)
             {
                 printf("[%d] ",sm[i][j]);
             }
             printf("\n");
-            }
         }
-        else if (menu == 2)
-        {
-            subMatriz();
-        }
-        else if (menu == 3)
-        {
-            uniMatriz();
-        }
-        else if (menu == 4)
-        {
-            inMatriz();
-        }
-        else if (menu == 5)
-        {
-            menup3();
-        }
-        else if (menu == 6)
-        {
-            qtdvmatriz();
-        }
+    }
+    else if (menu == 2)
+    {
+        subMatriz();
+    }
+    else if (menu == 3)
+    {
+        uniMatriz();
+    }
+    else if (menu == 4)
+    {
+        inMatriz();
+    }
+    else if (menu == 5)
+    {
+        menup3();
+    }
+    else if (menu == 6)
+    {
+        qtdvmatriz();
+    }
+    else
+    {
+        printf("Opçao Inválida");
+        menup2();
+    }
 }
 
 void menup3()//MENU TERCIARIO
 {
-        int opcao1=0;
-        int opcao2=0;
-        int x;
+    int opcao1=0;
+    int opcao2=0;
+    int x;
 
-        while (TRUE){
+    while (TRUE)
+    {
         system("cls");
         printf("Primeira Matriz:\n");
-            for (int i = 0; i < l; i++)
+        for (int i = 0; i < l; i++)
+        {
+            for (int j = 0; j < c; j++)
             {
-                for (int j = 0; j < c; j++)
-                {
                 printf("[%d] ",m[i][j]);
-                }
-            printf("\n");
             }
+            printf("\n");
+        }
         printf("Segunda Matriz:\n");
         for (int i = 0; i < l1; i++)
         {
@@ -221,20 +228,20 @@ void menup3()//MENU TERCIARIO
             {
                 printf("[%d] ",m2[i][j]);
             }
-        printf("\n");
+            printf("\n");
         }
         printf("Escolha uma matriz:\n[1] Matriz 1\n[2] Matriz 2\n[3] Voltar ao Menu Anterior\n");
         scanf("%d",&opcao1);
         if (opcao1 == 1)
-            {
-                printf("MATRIZ 1 SELECIONADA\n");
-                printf("====================================================================\n");
-            }
+        {
+            printf("MATRIZ 1 SELECIONADA\n");
+            printf("====================================================================\n");
+        }
         if (opcao1 == 2)
-            {
-                printf("MATRIZ 2 SELECIONADA\n");
-                printf("====================================================================\n");
-            }
+        {
+            printf("MATRIZ 2 SELECIONADA\n");
+            printf("====================================================================\n");
+        }
         if (opcao1 == 3)
         {
             menup2();
@@ -247,7 +254,7 @@ void menup3()//MENU TERCIARIO
         printf("====================================================================\n");
         if (opcao1 == 1)
         {
-        for (int i = 0; i < l; i++)
+            for (int i = 0; i < l; i++)
             {
                 for (int j = 0; j < c; j++)
                 {
@@ -261,15 +268,15 @@ void menup3()//MENU TERCIARIO
                     }
                 }
             }
-        for (int i = 0; i < l; i++)
-        {
-            for (int j = 0; j < c; j++)
+            for (int i = 0; i < l; i++)
             {
-                printf("[%d] ",sm[i][j]);
+                for (int j = 0; j < c; j++)
+                {
+                    printf("[%d] ",sm[i][j]);
+                }
+                printf("\n");
             }
-            printf("\n");
-        }
-        getch();
+            getch();
         }
         else if (opcao1 == 2)
         {
@@ -287,22 +294,22 @@ void menup3()//MENU TERCIARIO
                     }
                 }
             }
-        for (int i = 0; i < l; i++)
-        {
-            for (int j = 0; j < c; j++)
+            for (int i = 0; i < l; i++)
             {
-                printf("[%d] ",sm[i][j]);
+                for (int j = 0; j < c; j++)
+                {
+                    printf("[%d] ",sm[i][j]);
+                }
+                printf("\n");
             }
-        printf("\n");
+            getch();
         }
-    getch();
-}
-else
-{
-        printf("Opção Inválida\n");
-        getch();
-}
-}
+        else
+        {
+            printf("Opção Inválida\n");
+            getch();
+        }
+    }
     menup2();
 }
 
@@ -311,24 +318,24 @@ void matriz()// FUNÇÃO DE PREENCHIMENTO DE MATRIZ
     system("cls");
     printf("Preencha a primeira matriz:\n");
     for (int i = 0; i < l; i++)
+    {
+        for (int j = 0; j < c; j++)
         {
-            for (int j = 0; j < c; j++)
-            {
-                scanf("%d",&m[i][j]);
-            }
+            scanf("%d",&m[i][j]);
         }
-        system("cls");
-            printf("Preencha a segunda matriz:\n");
-        for (int i = 0; i < l1; i++)
+    }
+    system("cls");
+    printf("Preencha a segunda matriz:\n");
+    for (int i = 0; i < l1; i++)
+    {
+        for (int j = 0; j < c1; j++)
         {
-            for (int j = 0; j < c1; j++)
-            {
-                scanf("%d",&m2[i][j]);
-            }
+            scanf("%d",&m2[i][j]);
         }
-        p = 1;
-        system("cls");
-        menup();
+    }
+    p = 1;
+    system("cls");
+    menup();
 }
 
 void somaMatriz()//FUNÇÃO DE SOMA DE MATRIZES
@@ -336,51 +343,51 @@ void somaMatriz()//FUNÇÃO DE SOMA DE MATRIZES
 
     system("cls");
     printf("Primeira Matriz:\n");
-            for (int i = 0; i < l; i++)
-            {
-                for (int j = 0; j < c; j++)
-                {
-                printf("[%d] ",m[i][j]);
-                }
-            printf("\n");
-            }
-        printf("Segunda Matriz:\n");
-        for (int i = 0; i < l1; i++)
-        {
-            for (int j = 0; j < c1; j++)
-            {
-                printf("[%d] ",m2[i][j]);
-            }
-        printf("\n");
-        }
-        printf("====================================================================\n");
-    if (c == c1 && l == l1)
-        {
-            printf("SOMA:\n");
-            printf("====================================================================\n");
-            for (int i = 0; i < l; i++)
-            {
-                for (int j = 0; j < c; j++)
-                {
-                    sm[i][j] = m[i][j]+m2[i][j];
-                }
-            }
     for (int i = 0; i < l; i++)
     {
         for (int j = 0; j < c; j++)
         {
-            printf("[%d] ",sm[i][j]);
+            printf("[%d] ",m[i][j]);
         }
-    printf("\n");
+        printf("\n");
     }
-    getch();
+    printf("Segunda Matriz:\n");
+    for (int i = 0; i < l1; i++)
+    {
+        for (int j = 0; j < c1; j++)
+        {
+            printf("[%d] ",m2[i][j]);
+        }
+        printf("\n");
+    }
+    printf("====================================================================\n");
+    if (c == c1 && l == l1)
+    {
+        printf("SOMA:\n");
+        printf("====================================================================\n");
+        for (int i = 0; i < l; i++)
+        {
+            for (int j = 0; j < c; j++)
+            {
+                sm[i][j] = m[i][j]+m2[i][j];
+            }
+        }
+        for (int i = 0; i < l; i++)
+        {
+            for (int j = 0; j < c; j++)
+            {
+                printf("[%d] ",sm[i][j]);
+            }
+            printf("\n");
+        }
+        getch();
     }
     else
-        {
-            printf("Operação Impossível\nPressione qualquer tecla para continuar");
-            getch();
-        }
-menup2();
+    {
+        printf("Operação Impossível\nPressione qualquer tecla para continuar");
+        getch();
+    }
+    menup2();
 }
 
 void subMatriz()//FUNÇÃO DE SUBTRAÇÃO
@@ -391,14 +398,14 @@ void subMatriz()//FUNÇÃO DE SUBTRAÇÃO
         system("cls");
         menu = 99;
         printf("Primeira Matriz:\n");
-            for (int i = 0; i < l; i++)
+        for (int i = 0; i < l; i++)
+        {
+            for (int j = 0; j < c; j++)
             {
-                for (int j = 0; j < c; j++)
-                {
                 printf("[%d] ",m[i][j]);
-                }
-            printf("\n");
             }
+            printf("\n");
+        }
         printf("Segunda Matriz:\n");
         for (int i = 0; i < l1; i++)
         {
@@ -406,7 +413,7 @@ void subMatriz()//FUNÇÃO DE SUBTRAÇÃO
             {
                 printf("[%d] ",m2[i][j]);
             }
-        printf("\n");
+            printf("\n");
         }
         printf("====================================================================\n");
         printf("[1] MATRIZ 1 - MATRIZ 2\n[2] MATRIZ 2 - MATRIZ 1\n");
@@ -419,19 +426,19 @@ void subMatriz()//FUNÇÃO DE SUBTRAÇÃO
             {
                 for (int j = 0; j < c; j++)
                 {
-                printf("[%d] ",m[i][j]);
+                    printf("[%d] ",m[i][j]);
                 }
-            printf("\n");
+                printf("\n");
             }
-        printf("Segunda Matriz:\n");
-        for (int i = 0; i < l1; i++)
-        {
-            for (int j = 0; j < c1; j++)
+            printf("Segunda Matriz:\n");
+            for (int i = 0; i < l1; i++)
             {
-                printf("[%d] ",m2[i][j]);
+                for (int j = 0; j < c1; j++)
+                {
+                    printf("[%d] ",m2[i][j]);
+                }
+                printf("\n");
             }
-        printf("\n");
-        }
             printf("====================================================================\n");
             printf("MATRIZ 1 - MATRIZ 2\n");
             printf("====================================================================\n");
@@ -445,13 +452,13 @@ void subMatriz()//FUNÇÃO DE SUBTRAÇÃO
             for (int i = 0; i < l; i++)
             {
                 for (int j = 0; j < c; j++)
-            {
-                printf("[%d] ",sm[i][j]);
-            }
+                {
+                    printf("[%d] ",sm[i][j]);
+                }
                 printf("\n");
             }
         }
-    else if (menu == 2)
+        else if (menu == 2)
         {
             system("cls");
             printf("Primeira Matriz:\n");
@@ -459,19 +466,19 @@ void subMatriz()//FUNÇÃO DE SUBTRAÇÃO
             {
                 for (int j = 0; j < c; j++)
                 {
-                printf("[%d] ",m[i][j]);
+                    printf("[%d] ",m[i][j]);
                 }
-            printf("\n");
+                printf("\n");
             }
-        printf("Segunda Matriz:\n");
-        for (int i = 0; i < l1; i++)
-        {
-            for (int j = 0; j < c1; j++)
+            printf("Segunda Matriz:\n");
+            for (int i = 0; i < l1; i++)
             {
-                printf("[%d] ",m2[i][j]);
+                for (int j = 0; j < c1; j++)
+                {
+                    printf("[%d] ",m2[i][j]);
+                }
+                printf("\n");
             }
-        printf("\n");
-        }
             printf("====================================================================\n");
             printf("MATRIZ 2 - MATRIZ 1\n");
             printf("====================================================================\n");
@@ -488,7 +495,7 @@ void subMatriz()//FUNÇÃO DE SUBTRAÇÃO
                 {
                     printf("[%d] ",sm[i][j]);
                 }
-            printf("\n");
+                printf("\n");
             }
         }
     }
@@ -508,25 +515,25 @@ void uniMatriz()// FUNÇÃO DE UNIÃO DE MATRIZES
     memset(vet,'\0',50);
     system("cls");
     printf("Primeira Matriz:\n");
-            for (int i = 0; i < l; i++)
-            {
-                for (int j = 0; j < c; j++)
-                {
-                printf("[%d] ",m[i][j]);
-                }
-            printf("\n");
-            }
-        printf("Segunda Matriz:\n");
-        for (int i = 0; i < l1; i++)
+    for (int i = 0; i < l; i++)
+    {
+        for (int j = 0; j < c; j++)
         {
-            for (int j = 0; j < c1; j++)
-            {
-                printf("[%d] ",m2[i][j]);
-            }
+            printf("[%d] ",m[i][j]);
+        }
+        printf("\n");
+    }
+    printf("Segunda Matriz:\n");
+    for (int i = 0; i < l1; i++)
+    {
+        for (int j = 0; j < c1; j++)
+        {
+            printf("[%d] ",m2[i][j]);
+        }
         printf("\n");
 
-        }
-        printf("====================================================================\nUNIÃO DAS MATRIZES\n====================================================================\n");
+    }
+    printf("====================================================================\nUNIÃO DAS MATRIZES\n====================================================================\n");
     for (int i = 0; i < l; ++i)
     {
         for (int j = 0; j < c; ++j)
@@ -660,7 +667,7 @@ void inMatriz()// FUNÇÃO DE INTERSECÇÃO - ERRO
         {
             printf("[%d] ",m2[i][j]);
         }
-    printf("\n");
+        printf("\n");
     }
     printf("====================================================================\n");
     printf("\n RESULTADO DA INTERSECCAO DAS DUAS MATRIZES : \n\n");
@@ -723,14 +730,14 @@ void qtdvmatriz()//FUNÇÃO DE VERIFICAÇÃO DE N VEZES
 {
     system("cls");
     printf("Primeira Matriz:\n");
-        for (int i = 0; i < l; i++)
+    for (int i = 0; i < l; i++)
+    {
+        for (int j = 0; j < c; j++)
         {
-            for (int j = 0; j < c; j++)
-            {
             printf("[%d] ",m[i][j]);
-            }
-        printf("\n");
         }
+        printf("\n");
+    }
     printf("Segunda Matriz:\n");
     for (int i = 0; i < l1; i++)
     {
@@ -738,7 +745,7 @@ void qtdvmatriz()//FUNÇÃO DE VERIFICAÇÃO DE N VEZES
         {
             printf("[%d] ",m2[i][j]);
         }
-    printf("\n");
+        printf("\n");
     }
     printf("====================================================================\n");
     int vezes, cont=0, cont2=0, total;
@@ -780,9 +787,11 @@ void qtdvmatriz()//FUNÇÃO DE VERIFICAÇÃO DE N VEZES
     menup2();
 }
 
-void main(){ //Configurações iniciais programa...
+void main()  //Configurações iniciais programa...
+{
     system("color 1F");
     setlocale(LC_ALL, "Portuguese");
     SetConsoleTitle("MANIPULACAO E INTERACAO DE MATRIZES (Trabalho Final : Waldemar P. F. Silva)");
     menup();
 }
+
