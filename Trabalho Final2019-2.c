@@ -203,7 +203,7 @@ void menup2()//MENU SECUNDARIO
     }
 }
 
-void menup3()//MENU TERCIARIO
+void menup3()//MENU TERCIARIO ( SOMA / SUB )
 {
     int opcao1=0;
     int opcao2=0;
@@ -252,17 +252,17 @@ void menup3()//MENU TERCIARIO
         printf("por: ");
         scanf("%d",&x);
         printf("====================================================================\n");
-        if (opcao1 == 1)
+        if (opcao1 == 1)// MATRIZ 1 SELECT
         {
             for (int i = 0; i < l; i++)
             {
                 for (int j = 0; j < c; j++)
                 {
-                    if (opcao2 == 1)
+                    if (opcao2 == 1) // REALIZA SOMA
                     {
                         sm[i][j] = m[i][j]+ x;
                     }
-                    else
+                    else // REALIZA MULTIPLICAÇÃO
                     {
                         sm[i][j] = m[i][j]* x;
                     }
@@ -278,7 +278,7 @@ void menup3()//MENU TERCIARIO
             }
             getch();
         }
-        else if (opcao1 == 2)
+        else if (opcao1 == 2) // MATRIZ 2 SELECT
         {
             for (int i = 0; i < l1; i++)
             {
@@ -286,11 +286,11 @@ void menup3()//MENU TERCIARIO
                 {
                     if (opcao2 == 1)
                     {
-                        sm[i][j] = m2[i][j]+ x;
+                        sm[i][j] = m2[i][j]+ x; // SOMA
                     }
                     else
                     {
-                        sm[i][j] = m2[i][j]* x;
+                        sm[i][j] = m2[i][j]* x;// MULT
                     }
                 }
             }
@@ -337,7 +337,7 @@ void matriz()// FUNÇÃO DE PREENCHIMENTO DE MATRIZ
     menup();
 }
 
-void somaMatriz()//FUNÇÃO DE SOMA DE MATRIZES
+void somaMatriz()//FUNÇÃO DE SOMA DAS 2 MATRIZES
 {
 
     system("cls");
@@ -389,7 +389,7 @@ void somaMatriz()//FUNÇÃO DE SOMA DE MATRIZES
     menup2();
 }
 
-void subMatriz()//FUNÇÃO DE SUBTRAÇÃO
+void subMatriz()//FUNÇÃO DE SUBTRAÇÃO DAS 2 MATRIZES
 {
     int menu;
     if (c == c1 && l == l1)
@@ -497,12 +497,12 @@ void subMatriz()//FUNÇÃO DE SUBTRAÇÃO
                 printf("\n");
             }
         }
-    else
-    {
-        system("cls");
-        printf("Operação Impossível\nPressione qualquer tecla para continuar");
-        getch();
-    }
+        else
+        {
+            system("cls");
+            printf("Operação Impossível\nPressione qualquer tecla para continuar");
+            getch();
+        }
     }
     getch();
     menup2();
@@ -586,7 +586,7 @@ void uniMatriz()// FUNÇÃO DE UNIÃO DE MATRIZES
 
 void inMatriz()// FUNÇÃO DE INTERSECÇÃO
 {
-    int vet[25],vet2[25],vet3[25];
+    int vet[50],vet2[50],vet3[50];
     int k = 0, k2 = 0, k3 = 0, y = 0;
     for (int i = 0; i < l; ++i)
     {
@@ -643,7 +643,7 @@ void inMatriz()// FUNÇÃO DE INTERSECÇÃO
                 {
                     vet3[m] = vet3[m+1];
                 }
-            y = y-1;
+                y = y-1;
             }
         }
     }
@@ -680,7 +680,7 @@ void inMatriz()// FUNÇÃO DE INTERSECÇÃO
     menup2();
 }
 
-void confM() //FUNÇÃO DE CONFIGURAÇÃO
+void confM() //FUNÇÃO DE CONFIGURAÇÃO DE MATRIZ
 {
     printf("QUANTIDADE MÁXIMA 5:\n");
     printf("[LINHAS]Primeira Matriz: ");
@@ -720,6 +720,7 @@ void confM() //FUNÇÃO DE CONFIGURAÇÃO
     {
         printf("Operação Impossível\n NÃO PERMITIDO\nVALOR MÁXIMO 5\nPressione qualquer tecla para continuar");
         getch();
+        menup();
     }
     FConfig = 1;                                        //INFORMA QUE A CONFIGURAÇÃO FOI CRIADA
     menup();                                          //VOLTA PRO MENU
@@ -793,4 +794,3 @@ void main()  //Configurações iniciais programa...
     SetConsoleTitle("MANIPULACAO E INTERACAO DE MATRIZES (Trabalho Final : Waldemar P. F. Silva)");
     menup();
 }
-
