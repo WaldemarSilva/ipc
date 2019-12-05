@@ -324,7 +324,6 @@ void matriz()// FUNÇÃO DE PREENCHIMENTO DE MATRIZ
             scanf("%d",&m[i][j]);
         }
     }
-    system("cls");
     printf("Preencha a segunda matriz:\n");
     for (int i = 0; i < l1; i++)
     {
@@ -498,12 +497,12 @@ void subMatriz()//FUNÇÃO DE SUBTRAÇÃO
                 printf("\n");
             }
         }
-    }
     else
     {
         system("cls");
         printf("Operação Impossível\nPressione qualquer tecla para continuar");
         getch();
+    }
     }
     getch();
     menup2();
@@ -585,7 +584,7 @@ void uniMatriz()// FUNÇÃO DE UNIÃO DE MATRIZES
     menup2();
 }
 
-void inMatriz()// FUNÇÃO DE INTERSECÇÃO - ERRO
+void inMatriz()// FUNÇÃO DE INTERSECÇÃO
 {
     int vet[25],vet2[25],vet3[25];
     int k = 0, k2 = 0, k3 = 0, y = 0;
@@ -644,8 +643,8 @@ void inMatriz()// FUNÇÃO DE INTERSECÇÃO - ERRO
                 {
                     vet3[m] = vet3[m+1];
                 }
-            }
             y = y-1;
+            }
         }
     }
 
